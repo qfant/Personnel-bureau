@@ -42,9 +42,10 @@ public class MainActivity extends MainTabActivity {
         setContentView(R.layout.pub_activity_mian_layout);
         ButterKnife.bind(this);
         tabLayout = tlTab;
-        addTab("待接单", HomeFragment.class, myBundle, R.string.icon_font_home);
-        addTab("已接单", HomeFragment.class, myBundle, R.string.icon_font_home);
-        addTab("已完成", HomeFragment.class, myBundle, R.string.icon_font_home);
+        addTab("视频监控", HomeFragment.class, myBundle, R.string.icon_font_a);
+        addTab("内部通知", MessageFragment.class, myBundle, R.string.icon_font_b);
+        addTab("六员一岗", PersonFragment.class, myBundle, R.string.icon_font_c);
+        addTab("企业用工", ContactFragment.class, myBundle, R.string.icon_font_d);
         onPostCreate();
         tv_right.setTypeface(MainApplication.getIconFont());
         tv_right.setText(R.string.icon_font_my);

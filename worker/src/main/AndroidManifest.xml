@@ -3,7 +3,7 @@
     package="com.haolb.client"
     android:versionCode="1"
     android:versionName="1.0.0">
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -53,6 +53,10 @@
             android:name="com.page.home.activity.MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.page.home.activity.VideoActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape" />
         <activity
             android:name="com.page.detail.DetailActivity"
             android:configChanges="orientation|keyboardHidden"

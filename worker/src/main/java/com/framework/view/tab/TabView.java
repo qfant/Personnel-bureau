@@ -59,12 +59,15 @@ public class TabView extends LinearLayout implements View.OnClickListener {
         super.setSelected(selected);
         if (!selected) {
             view_line.setBackgroundResource(R.color.transparent);
-            text.setTextColor(getResources().getColor(R.color.pub_color_black));
+            text.setTextColor(getResources().getColor(R.color.pub_color_gray_666));
+            icon.setTextColor(getResources().getColor(R.color.pub_color_gray_666));
             icon.setText(getResources().getString(tabItem.icon[0]));
         } else {
             view_line.setBackgroundResource(R.color.pub_color_blue);
             text.setTextColor(getResources().getColor(R.color.pub_color_blue));
-            icon.setText(tabItem.icon.length >= 2 ? getResources().getString(tabItem.icon[1]) : getResources().getString(tabItem.icon[0]));
+            icon.setTextColor(getResources().getColor(R.color.pub_color_blue));
+            icon.setText(getResources().getString(tabItem.icon[0]));
+//            icon.setText(tabItem.icon.length >= 2 ? getResources().getString(tabItem.icon[1]) : getResources().getString(tabItem.icon[0]));
         }
     }
 

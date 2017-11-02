@@ -48,11 +48,10 @@ public class MainTabActivity extends BaseActivity implements TabLayout.OnTabClic
         viewPage.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                HomeFragment fragment = null;
+                BaseFragment fragment = null;
                 try {
                     TabItem tabItem = mTabs.get(position);
-                    fragment = (HomeFragment) tabItem.tagFragmentClz.newInstance();
-                    fragment.setType(position);
+                    fragment =  tabItem.tagFragmentClz.newInstance();
                 } catch (InstantiationException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {

@@ -1,4 +1,4 @@
-package com.page.home.activity;
+package com.page.home.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -31,13 +31,8 @@ public class HomeAdapter extends QSimpleAdapter<WorkerRepairResult.repair> {
     @Override
     protected void bindView(View view, Context context, WorkerRepairResult.repair item, int position) {
         ImageView imageView = (ImageView) view.findViewById(R.id.image);
-        TextView tvInfo = (TextView) view.findViewById(R.id.tv_info);
-        TextView tvAddress = (TextView) view.findViewById(R.id.tv_address);
-        TextView btnDetail = (TextView) view.findViewById(R.id.btn_detail);
-        ImageLoader.getInstance(context).loadImage(item.pic, imageView,R.drawable.moren);
-        tvAddress.setText(item.address);
-        tvInfo.setText(item.intro);
-        btnDetail.setText(type == 0 ? "接单" : "详情");
+        TextView tvInfo = (TextView) view.findViewById(R.id.text_name);
+//        ImageLoader.getInstance(context).loadImage(item.pic, imageView,R.drawable.moren);
     }
 
     public int getType() {

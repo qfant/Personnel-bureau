@@ -42,4 +42,5 @@ dependencies {
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
     compile 'com.github.hackware1993:MagicIndicator:1.5.0'
     //banner
+    compile project(':vitamio')
 }

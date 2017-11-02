@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.framework.activity.BaseFragment;
@@ -18,11 +17,11 @@ import com.haolb.client.R;
 import com.page.detail.DetailActivity;
 import com.page.detail.DetailParam;
 import com.page.detail.DetailResult;
-import com.page.home.WorkerRepairParam;
 import com.page.home.WorkerRepairResult;
+import com.page.home.adapter.HomeAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,12 +71,13 @@ public class HomeFragment extends BaseFragment {
         mainLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                HomeAdapter adapter = (HomeAdapter) adapterView.getAdapter();
-                WorkerRepairResult.repair item = adapter.getItem(i);
-                item.type = adapter.getType();
-                DetailParam param = new DetailParam();
-                param.id = item.id;
-                Request.startRequest(param, ServiceMap.getRepair, mHandler, Request.RequestFeature.BLOCK);
+//                HomeAdapter adapter = (HomeAdapter) adapterView.getAdapter();
+//                WorkerRepairResult.repair item = adapter.getItem(i);
+//                item.type = adapter.getType();
+//                DetailParam param = new DetailParam();
+//                param.id = item.id;
+//                Request.startRequest(param, ServiceMap.getRepair, mHandler, Request.RequestFeature.BLOCK);
+                qStartActivity(VideoActivity.class);
             }
         });
     }
@@ -89,10 +89,21 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void loadData() {
-        mainSrl.setRefreshing(true);
-        WorkerRepairParam param = new WorkerRepairParam();
-        param.type = type + 1;
-        Request.startRequest(param, ServiceMap.getWorkerRepairs, mHandler, Request.RequestFeature.ADD_ONORDER);
+        WorkerRepairResult.repair repair = new WorkerRepairResult.repair();
+        repair.url ="";
+        repair.imageUrl="";
+        List<WorkerRepairResult.repair> list =new ArrayList<>();
+        list.add(repair);
+        list.add(repair);
+        list.add(repair);
+        list.add(repair);
+        list.add(repair);
+        list.add(repair);
+        adapter.setData(list);
+//        mainSrl.setRefreshing(true);
+//        WorkerRepairParam param = new WorkerRepairParam();
+//        param.type = type + 1;
+//        Request.startRequest(param, ServiceMap.getWorkerRepairs, mHandler, Request.RequestFeature.ADD_ONORDER);
     }
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {

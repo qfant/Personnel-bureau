@@ -8,14 +8,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:background="@color/pub_color_blue">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="维修师傅"
+            android:text="@string/app_name"
             android:textColor="#fff"
             android:textSize="18dp"
             android:textStyle="bold" />
@@ -33,21 +33,6 @@
             android:textSize="20dp" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/pub_color_gray_line" />
-
-    <com.framework.view.tab.TabLayout
-        android:background="#fff"
-        android:id="@+id/tl_tab"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <View
-        style="@style/line_gray_h"
-        android:layout_height="0.5dp"
-        android:background="@color/pub_color_gray_line" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPage"
@@ -55,5 +40,15 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <View
+        style="@style/line_gray_h"
+        android:layout_height="0.5dp"
+        android:background="@color/pub_color_gray_line" />
+
+    <com.framework.view.tab.TabLayout
+        android:id="@+id/tl_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff" />
 
 </LinearLayout>
