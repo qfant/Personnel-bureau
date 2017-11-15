@@ -41,6 +41,7 @@ public class ContactListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pub_activity_contact_list);
         ButterKnife.bind(this);
+        setTitleBar("小李村", true);
         initData();
     }
 
