@@ -150,7 +150,7 @@ public class QunarImageDownloader implements Downloader {
 		if (snapshot != null) {
 			is = snapshot.getInputStream(DISK_CACHE_INDEX);
 		} else {
-			throw new ResponseException("download image error url is:" + uri);
+			throw new ResponseException("download image error rtmp is:" + uri);
 		}
 
 		return new Response(is, fromCache);

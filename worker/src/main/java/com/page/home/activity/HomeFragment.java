@@ -17,6 +17,8 @@ import com.haolb.client.R;
 import com.page.detail.DetailActivity;
 import com.page.detail.DetailParam;
 import com.page.detail.DetailResult;
+import com.page.detail.EquipmentResult;
+import com.page.home.WorkerRepairParam;
 import com.page.home.WorkerRepairResult;
 import com.page.home.adapter.HomeAdapter;
 
@@ -72,12 +74,10 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //                HomeAdapter adapter = (HomeAdapter) adapterView.getAdapter();
-//                WorkerRepairResult.repair item = adapter.getItem(i);
-//                item.type = adapter.getType();
-//                DetailParam param = new DetailParam();
-//                param.id = item.id;
-//                Request.startRequest(param, ServiceMap.getRepair, mHandler, Request.RequestFeature.BLOCK);
-                qStartActivity(VideoActivity.class);
+                WorkerRepairResult.repair item = adapter.getItem(i);
+                DetailParam param = new DetailParam();
+                param.id = item.id;
+                Request.startRequest(param, ServiceMap.equipment, mHandler, Request.RequestFeature.BLOCK);
             }
         });
     }
@@ -89,44 +89,46 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void loadData() {
-        WorkerRepairResult.repair repair = new WorkerRepairResult.repair();
-        repair.url ="";
-        repair.imageUrl="";
-        List<WorkerRepairResult.repair> list =new ArrayList<>();
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        adapter.setData(list);
+//        WorkerRepairResult.repair repair = new WorkerRepairResult.repair();
+//        repair.rtmp ="";
+//        repair.imageUrl="";
+//        List<WorkerRepairResult.repair> list =new ArrayList<>();
+//        list.add(repair);
+//        list.add(repair);
+//        list.add(repair);
+//        list.add(repair);
+//        list.add(repair);
+//        list.add(repair);
+//        adapter.setData(list);
 //        mainSrl.setRefreshing(true);
-//        WorkerRepairParam param = new WorkerRepairParam();
-//        param.type = type + 1;
-//        Request.startRequest(param, ServiceMap.getWorkerRepairs, mHandler, Request.RequestFeature.ADD_ONORDER);
+        WorkerRepairParam param = new WorkerRepairParam();
+        param.type = 1;
+        Request.startRequest(param, ServiceMap.equipments, mHandler, Request.RequestFeature.ADD_ONORDER);
     }
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (super.onMsgSearchComplete(param)) {
             return true;
         }
-        if (param.key == ServiceMap.getWorkerRepairs) {
+        if (param.key == ServiceMap.equipments) {
             WorkerRepairResult result = (WorkerRepairResult) param.result;
             if (result.bstatus.code == 0) {
                 if (adapter != null) {
                     adapter.setType(type);
-                    adapter.setData(result.data.repairList);
+                    adapter.setData(result.data.equimpents);
                 }
                 if (mainSrl != null) {
                     mainSrl.setRefreshing(false);
                 }
             }
-        } else if (param.key == ServiceMap.getRepair) {
+        } else if (param.key == ServiceMap.equipment) {
             if (param.result.bstatus.code == 0) {
-                DetailResult result = (DetailResult) param.result;
+
+                qStartActivity(VideoActivity.class);
+                EquipmentResult result = (EquipmentResult) param.result;
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("repair", result.data);
-                qStartActivity(DetailActivity.class, bundle);
+                bundle.putSerializable("item", result.data);
+                qStartActivity(VideoActivity.class, bundle);
             } else {
                 showToast(param.result.bstatus.des);
             }

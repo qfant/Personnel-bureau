@@ -10,25 +10,30 @@ import java.util.List;
 
 public class WorkerRepairResult extends BaseResult {
 
-    public WorkerRepairData data;
+    public WorkerRepairData  data;
 
     public static class WorkerRepairData implements BaseData {
         public int totalNum;
-        public List<repair> repairList;
+        public List<repair> equimpents;
     }
 
 
     public static class repair implements BaseData {
-        public String statusCN;
-        public String address;
-        public String createtime;
-        public String phone;
-        public String intro;
-        public String pic;
-        public int id;
-        public int status;
+        public String id;
         public int type;
-        public String url;
+        public String name;
         public String imageUrl;
+        public String url;
+        public String areaid;
+        public String deviceid;
+        public String shareid;
+        public String uk;
+
+//        	"uk":"270539",
+//                    11-15 22:40:27.684 23618-23646/com.haolb.personnel V/response: 			"id":"23",
+//                11-15 22:40:27.684 23618-23646/com.haolb.personnel V/response: 			"name":"古城镇万瑞箱包有限公司",
+//                11-15 22:40:27.684 23618-23646/com.haolb.personnel V/response: 			"areaid":"1",
+//                11-15 22:40:27.684 23618-23646/com.haolb.personnel V/response: 			"deviceid":"137894025675",
+//                11-15 22:40:27.684 23618-23646/com.haolb.personnel V/response: 			"shareid":"fa182dae82dd8ced3aae0bf4438aa265"
     }
 }

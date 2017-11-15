@@ -188,9 +188,9 @@ public abstract class BaseFragment extends Fragment implements OnClickListener,
 
 
     /*@Override
-    public void qOpenWebView(String url) {
+    public void qOpenWebView(String rtmp) {
         Bundle bundle = new Bundle();
-        bundle.putString(AppConstants.WEBVIEW_URL, url);
+        bundle.putString(AppConstants.WEBVIEW_URL, rtmp);
         qStartActivity(WebActivity.class, bundle);
     }*/
 

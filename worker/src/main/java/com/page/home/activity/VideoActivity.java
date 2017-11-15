@@ -7,10 +7,12 @@ import android.widget.TextView;
 
 import com.framework.activity.BaseActivity;
 import com.haolb.client.R;
+import com.page.detail.EquipmentResult;
 
 import io.vov.vitamio.LibsChecker;
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.Vitamio;
+import io.vov.vitamio.utils.Log;
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 
@@ -32,6 +34,7 @@ public class VideoActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EquipmentResult.EquipmentData data = (EquipmentResult.EquipmentData) myBundle.getSerializable("item");
         //检查vitamio框架是否可用
         if (!LibsChecker.checkVitamioLibs(this)) {
             return;
@@ -44,10 +47,10 @@ public class VideoActivity extends BaseActivity {
         //初始化加载库文件
         if (Vitamio.isInitialized(this)) {
             videoView = (VideoView) findViewById(R.id.vitamio);
-            videoView.setVideoURI(Uri.parse(url1));
+            videoView.setVideoURI(Uri.parse(data.rtmp));
             videoView.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);
             MediaController controller = new MediaController(this);
-            videoView.setMediaController(controller);
+//            videoView.setMediaController(controller);
             videoView.setBufferSize(10240); //设置视频缓冲大小。默认1024KB，单位byte
             videoView.requestFocus();
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -55,6 +58,7 @@ public class VideoActivity extends BaseActivity {
                 public void onPrepared(MediaPlayer mediaPlayer) {
                     // optional need Vitamio 4.0
                     mediaPlayer.setPlaybackSpeed(1.0f);
+                    Log.d("xxxx" ,"xxxxxxxxxxxxx");
                     //mediaPlayer.setLooping(true);
                 }
             });
@@ -63,6 +67,7 @@ public class VideoActivity extends BaseActivity {
                 @Override
                 public void onBufferingUpdate(MediaPlayer mp, int percent) {
                     percentTv.setText("已缓冲：" + percent + "%");
+                    Log.d("xxxx" ,"yyy"+percent);
                 }
             });
             videoView.setOnInfoListener(new MediaPlayer.OnInfoListener() {
@@ -73,6 +78,7 @@ public class VideoActivity extends BaseActivity {
                         case MediaPlayer.MEDIA_INFO_BUFFERING_START:
                             percentTv.setVisibility(View.VISIBLE);
                             netSpeedTv.setVisibility(View.VISIBLE);
+                            Log.d("xxxx" ,"yyy1");
                             mp.pause();
                             break;
                         //缓冲结束
@@ -80,10 +86,12 @@ public class VideoActivity extends BaseActivity {
                             percentTv.setVisibility(View.GONE);
                             netSpeedTv.setVisibility(View.GONE);
                             mp.start(); //缓冲结束再播放
+                            Log.d("xxxx" ,"yyy3");
                             break;
                         //正在缓冲
                         case MediaPlayer.MEDIA_INFO_DOWNLOAD_RATE_CHANGED:
                             netSpeedTv.setText("当前网速:" + extra + "kb/s");
+                            Log.d("xxxx" ,"yyy2");
                             break;
                     }
                     return true;

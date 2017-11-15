@@ -8,18 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListView;
 
 import com.framework.activity.BaseFragment;
 import com.framework.net.NetworkParam;
-import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.haolb.client.R;
 import com.page.detail.DetailActivity;
-import com.page.detail.DetailParam;
 import com.page.detail.DetailResult;
 import com.page.home.WorkerRepairResult;
-import com.page.home.adapter.HomeAdapter;
 import com.page.home.adapter.PersonAdapter;
 
 import java.util.ArrayList;
@@ -122,7 +118,7 @@ public class PersonFragment extends BaseFragment {
             if (result.bstatus.code == 0) {
                 if (adapter != null) {
                     adapter.setType(type);
-                    adapter.setData(result.data.repairList);
+                    adapter.setData(result.data.equimpents);
                 }
                 if (mainSrl != null) {
                     mainSrl.setRefreshing(false);

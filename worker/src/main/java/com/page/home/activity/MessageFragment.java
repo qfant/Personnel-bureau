@@ -91,7 +91,7 @@ public class MessageFragment extends BaseFragment {
     private void loadData() {
         WorkerRepairResult.repair repair = new WorkerRepairResult.repair();
         repair.url ="";
-        repair.imageUrl="";
+//        repair.imageUrl="";
         List<WorkerRepairResult.repair> list =new ArrayList<>();
         list.add(repair);
         list.add(repair);
@@ -115,7 +115,7 @@ public class MessageFragment extends BaseFragment {
             if (result.bstatus.code == 0) {
                 if (adapter != null) {
                     adapter.setType(type);
-                    adapter.setData(result.data.repairList);
+                    adapter.setData(result.data.equimpents);
                 }
                 if (mainSrl != null) {
                     mainSrl.setRefreshing(false);

@@ -4,6 +4,7 @@ package com.framework.net;
 import com.framework.domain.response.BaseResult;
 import com.framework.utils.Enums;
 import com.page.detail.DetailResult;
+import com.page.detail.EquipmentResult;
 import com.page.home.WorkerRepairResult;
 import com.page.login.activity.LoginResult;
 
@@ -11,6 +12,8 @@ import com.page.login.activity.LoginResult;
  * @author zexu
  */
 public enum ServiceMap implements Enums.IType {
+    equipments("/equipments", WorkerRepairResult.class), //获取通讯录联系人
+    equipment("/equipment", EquipmentResult.class), //获取通讯录联系人
     getWorkerRepairs("/getWorkerRepairs.do", WorkerRepairResult.class), //获取通讯录联系人
     getLinks("/getLinks.do", BaseResult.class),
     checkVersion("/checkVersion.do", BaseResult.class),

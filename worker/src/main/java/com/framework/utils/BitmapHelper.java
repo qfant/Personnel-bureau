@@ -49,13 +49,13 @@ public class BitmapHelper {
 
     public static Bitmap decodeURL(String urlString) {
         try {
-            // Log.d(TAG, "get bitmap from url:" + urlString);
+            // Log.d(TAG, "get bitmap from rtmp:" + urlString);
             HttpURLConnection conn = (HttpURLConnection) new URL(urlString).openConnection();
             conn.setDoInput(true);
             conn.connect();
             return decodeStream(conn.getInputStream());
         } catch (IOException e) {
-            // Log.e(TAG, "get bitmap from url failed", e);
+            // Log.e(TAG, "get bitmap from rtmp failed", e);
             e.printStackTrace();
         }
         return null;

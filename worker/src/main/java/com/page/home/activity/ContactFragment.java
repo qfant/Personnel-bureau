@@ -8,15 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ListView;
 
 import com.framework.activity.BaseFragment;
 import com.framework.net.NetworkParam;
-import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.haolb.client.R;
 import com.page.detail.DetailActivity;
-import com.page.detail.DetailParam;
 import com.page.detail.DetailResult;
 import com.page.home.WorkerRepairResult;
 import com.page.home.adapter.ContactAdapter;
@@ -74,11 +71,11 @@ public class ContactFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 HomeAdapter adapter = (HomeAdapter) adapterView.getAdapter();
-                WorkerRepairResult.repair item = adapter.getItem(i);
-                item.type = adapter.getType();
-                DetailParam param = new DetailParam();
-                param.id = item.id;
-                Request.startRequest(param, ServiceMap.getRepair, mHandler, Request.RequestFeature.BLOCK);
+//                WorkerRepairResult.repair item = adapter.getItem(i);
+//                item.type = adapter.getType();
+//                DetailParam param = new DetailParam();
+//                param.id = item.id;
+//                Request.startRequest(param, ServiceMap.getRepair, mHandler, Request.RequestFeature.BLOCK);
             }
         });
     }
@@ -91,8 +88,8 @@ public class ContactFragment extends BaseFragment {
 
     private void loadData() {
         WorkerRepairResult.repair repair = new WorkerRepairResult.repair();
-        repair.url ="";
-        repair.imageUrl="";
+//        repair.rtmp ="";
+//        repair.imageUrl="";
         List<WorkerRepairResult.repair> list =new ArrayList<>();
         list.add(repair);
         list.add(repair);
@@ -116,7 +113,7 @@ public class ContactFragment extends BaseFragment {
             if (result.bstatus.code == 0) {
                 if (adapter != null) {
                     adapter.setType(type);
-                    adapter.setData(result.data.repairList);
+                    adapter.setData(result.data.equimpents);
                 }
                 if (mainSrl != null) {
                     mainSrl.setRefreshing(false);
