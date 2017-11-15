@@ -70,7 +70,8 @@ public class ContactFragment extends BaseFragment {
         mainLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                HomeAdapter adapter = (HomeAdapter) adapterView.getAdapter();
+//                HomeAdapter adapter = (HomeAdapter) adapterView.getAdapter();
+                qStartActivity(ContactListActivity.class);
 //                WorkerRepairResult.repair item = adapter.getItem(i);
 //                item.type = adapter.getType();
 //                DetailParam param = new DetailParam();

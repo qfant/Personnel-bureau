@@ -3,12 +3,10 @@ package com.page.home.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.framework.adapter.utils.QSimpleAdapter;
-import com.framework.utils.cache.ImageLoader;
 import com.haolb.client.R;
 import com.page.home.WorkerRepairResult;
 
@@ -16,23 +14,22 @@ import com.page.home.WorkerRepairResult;
  * Created by chenxi.cui on 2017/9/12.
  */
 
-public class HomeAdapter extends QSimpleAdapter<WorkerRepairResult.repair> {
+public class ContactListAdapter extends QSimpleAdapter<WorkerRepairResult.repair> {
     private int type;
 
-    public HomeAdapter(Context context) {
+    public ContactListAdapter(Context context) {
         super(context);
     }
 
     @Override
     protected View newView(Context context, ViewGroup parent) {
-        return inflate(R.layout.home_item, null, false);
+        return inflate(R.layout.pub_cotact_item, null, false);
     }
 
     @Override
     protected void bindView(View view, Context context, WorkerRepairResult.repair item, int position) {
         ImageView imageView = (ImageView) view.findViewById(R.id.image);
         TextView tvInfo = (TextView) view.findViewById(R.id.text_name);
-        tvInfo.setText(item.name);
 //        ImageLoader.getInstance(context).loadImage(item.pic, imageView,R.drawable.moren);
     }
 
