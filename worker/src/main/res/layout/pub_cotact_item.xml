@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:background="#fff"
         android:orientation="vertical"
-        android:padding="12dp">
+       android:layout_marginLeft="12dp">
 
         >
 

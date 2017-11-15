@@ -72,12 +72,12 @@ public class MessageFragment extends BaseFragment {
         mainLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                HomeAdapter adapter = (HomeAdapter) adapterView.getAdapter();
-                WorkerRepairResult.repair item = adapter.getItem(i);
-                item.type = adapter.getType();
-                DetailParam param = new DetailParam();
-                param.id = item.id;
-                Request.startRequest(param, ServiceMap.getRepair, mHandler, Request.RequestFeature.BLOCK);
+//                HomeAdapter adapter = (HomeAdapter) adapterView.getAdapter();
+//                WorkerRepairResult.repair item = adapter.getItem(i);
+//                item.type = adapter.getType();
+//                DetailParam param = new DetailParam();
+//                param.id = item.id;
+//                Request.startRequest(param, ServiceMap.getRepair, mHandler, Request.RequestFeature.BLOCK);
             }
         });
     }

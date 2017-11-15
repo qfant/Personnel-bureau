@@ -15,6 +15,8 @@ import com.page.detail.DetailActivity;
 import com.page.detail.DetailParam;
 import com.page.detail.DetailResult;
 import com.page.home.WorkerRepairResult;
+import com.page.home.adapter.ContactAdapter;
+import com.page.home.adapter.ContactListAdapter;
 import com.page.home.adapter.HomeAdapter;
 import com.page.home.adapter.MessageAdapter;
 
@@ -35,7 +37,7 @@ public class ContactListActivity extends BaseActivity {
     ListView mainLv;
     @BindView(R.id.main_srl)
     SwipeRefreshLayout mainSrl;
-    private MessageAdapter adapter;
+    private ContactListAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +48,7 @@ public class ContactListActivity extends BaseActivity {
     }
 
     private void initData() {
-        adapter = new MessageAdapter(getContext());
+        adapter = new ContactListAdapter(getContext());
         mainLv.setAdapter(adapter);
         mainSrl.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
                 android.R.color.holo_orange_light, android.R.color.holo_red_light);
