@@ -21,5 +21,6 @@ public class EquipmentResult extends BaseResult {
 
     public static class EquipmentData implements BaseData {
         public String rtmp;
+        public String name="";
     }
 }

@@ -123,12 +123,10 @@ public class HomeFragment extends BaseFragment {
             }
         } else if (param.key == ServiceMap.equipment) {
             if (param.result.bstatus.code == 0) {
-
-                qStartActivity(VideoActivity.class);
                 EquipmentResult result = (EquipmentResult) param.result;
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("item", result.data);
-                qStartActivity(VideoActivity.class, bundle);
+                qStartActivity(PlayerActivity.class, bundle);
             } else {
                 showToast(param.result.bstatus.des);
             }
