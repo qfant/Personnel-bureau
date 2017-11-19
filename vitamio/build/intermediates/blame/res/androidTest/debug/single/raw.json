@@ -1,6 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\chenxi.cui\\Desktop\\qfant\\Personnel-bureau\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\raw\\libarm.so",
-        "source": "C:\\Users\\chenxi.cui\\Desktop\\qfant\\Personnel-bureau\\vitamio\\build\\intermediates\\bundles\\debug\\res\\raw\\libarm.so"
+        "merged": "/Users/dzc/Desktop/privatejob/Personnel-bureau/C:\\Users\\chenxi.cui\\Desktop\\qfant\\Personnel-bureau\\vitamio\\build\\intermediates\\res\\merged\\androidTest\\debug\\raw\\libarm.so",
+        "source": "/Users/dzc/Desktop/privatejob/Personnel-bureau/C:\\Users\\chenxi.cui\\Desktop\\qfant\\Personnel-bureau\\vitamio\\build\\intermediates\\bundles\\debug\\res\\raw\\libarm.so"
+    },
+    {
+        "merged": "/Users/dzc/Desktop/privatejob/Personnel-bureau/vitamio/build/intermediates/res/merged/androidTest/debug/raw/libarm.so",
+        "source": "/Users/dzc/Desktop/privatejob/Personnel-bureau/vitamio/build/intermediates/bundles/debug/res/raw/libarm.so"
     }
 ]
