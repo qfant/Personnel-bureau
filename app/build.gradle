@@ -100,22 +100,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
-        applicationVariants.all { variant ->
-            variant.outputs.each { output ->
-                def outputFile = output.outputFile
-                if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                    def fileName = "wuye.apk"
-                    if (variant.buildType.name.equals("release")) {
-                        fileName = "wuye_v${defaultConfig.versionName}.apk"
-                    } else if (variant.buildType.name.equals("bate")) {
-                        fileName = "wuye_bate_v${defaultConfig.versionName}.apk"
-                    } else {
-                        fileName = "wuye_debug_v${defaultConfig.versionName}.apk"
-                    }
-                    output.outputFile = new File(outputFile.parent, fileName)
-                }
-            }
-        }
+//        applicationVariants.all { variant ->
+//            variant.outputs.each { output ->
+//                def outputFile = output.outputFile
+//                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                    def fileName = "wuye.apk"
+//                    if (variant.buildType.name.equals("release")) {
+//                        fileName = "wuye_v${defaultConfig.versionName}.apk"
+//                    } else if (variant.buildType.name.equals("bate")) {
+//                        fileName = "wuye_bate_v${defaultConfig.versionName}.apk"
+//                    } else {
+//                        fileName = "wuye_debug_v${defaultConfig.versionName}.apk"
+//                    }
+//                    output.outputFile = new File(outputFile.parent, fileName)
+//                }
+//            }
+//        }
     }
 
     packagingOptions {
