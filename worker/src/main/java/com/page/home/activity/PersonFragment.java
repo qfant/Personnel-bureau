@@ -19,6 +19,7 @@ import com.page.detail.DetailResult;
 import com.page.home.CamerasResult;
 import com.page.home.GetPersonsParam;
 import com.page.home.GetTownsParam;
+import com.page.home.PersonsResult;
 import com.page.home.TownsResult;
 import com.page.home.adapter.PersonAdapter;
 
@@ -91,7 +92,7 @@ public class PersonFragment extends BaseFragment {
     private void loadData() {
         mainSrl.setRefreshing(true);
         GetTownsParam param = new GetTownsParam();
-        Request.startRequest(param, ServiceMap.getTowns, mHandler, Request.RequestFeature.ADD_ONORDER);
+        Request.startRequest(param, ServiceMap.getPersons, mHandler, Request.RequestFeature.ADD_ONORDER);
     }
 
     @Override
@@ -99,26 +100,16 @@ public class PersonFragment extends BaseFragment {
         if (super.onMsgSearchComplete(param)) {
             return true;
         }
-        if (param.key == ServiceMap.getTowns) {
-            TownsResult result = (TownsResult) param.result;
-            if (result.bstatus.code == 0) {
+        if (param.key == ServiceMap.getPersons) {
+//            PersonsResult result = (PersonsResult) param.result;
+//            if (result.bstatus.code == 0) {
                 if (adapter != null) {
-                    adapter.setData(result.data.towns);
+//                    adapter.setData(result.data.towns);
                 }
                 if (mainSrl != null) {
                     mainSrl.setRefreshing(false);
                 }
             }
-        } else if (param.key == ServiceMap.getRepair) {
-            if (param.result.bstatus.code == 0) {
-                DetailResult result = (DetailResult) param.result;
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("CameraBean", result.data);
-                qStartActivity(DetailActivity.class, bundle);
-            } else {
-                showToast(param.result.bstatus.des);
-            }
-        }
         return super.onMsgSearchComplete(param);
     }
 

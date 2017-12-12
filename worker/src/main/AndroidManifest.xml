@@ -57,7 +57,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.page.home.activity.VideoActivity"
+            android:name="com.page.home.activity.MessageDetailActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" />
         <activity

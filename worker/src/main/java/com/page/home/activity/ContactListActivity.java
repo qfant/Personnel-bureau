@@ -45,7 +45,11 @@ public class ContactListActivity extends BaseActivity {
         setContentView(R.layout.pub_activity_contact_list);
         ButterKnife.bind(this);
         townBean = (TownsResult.TownBean) myBundle.getSerializable("item");
-        setTitleBar("小李村", true);
+        if (townBean == null) {
+            finish();
+            return;
+        }
+        setTitleBar(townBean.name, true);
         initData();
     }
 

@@ -1,6 +1,7 @@
 package com.page.home.adapter;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,13 +10,13 @@ import android.widget.TextView;
 import com.framework.adapter.utils.QSimpleAdapter;
 import com.haolb.client.R;
 import com.page.home.CamerasResult;
+import com.page.home.NoticesResult;
 
 /**
  * Created by chenxi.cui on 2017/9/12.
  */
 
-public class MessageAdapter extends QSimpleAdapter<CamerasResult.CameraBean> {
-    private int type;
+public class MessageAdapter extends QSimpleAdapter<NoticesResult.NoticeBean> {
 
     public MessageAdapter(Context context) {
         super(context);
@@ -27,17 +28,11 @@ public class MessageAdapter extends QSimpleAdapter<CamerasResult.CameraBean> {
     }
 
     @Override
-    protected void bindView(View view, Context context, CamerasResult.CameraBean item, int position) {
-        ImageView imageView = (ImageView) view.findViewById(R.id.image);
-        TextView tvInfo = (TextView) view.findViewById(R.id.text_name);
-//        ImageLoader.getInstance(context).loadImage(item.pic, imageView,R.drawable.moren);
+    protected void bindView(View view, Context context, NoticesResult.NoticeBean item, int position) {
+        TextView tvTitle = (TextView) view.findViewById(R.id.text_name);
+        TextView tvInfo = (TextView) view.findViewById(R.id.text_detail);
+        tvTitle.setText(item.title);
+        tvInfo.setText(Html.fromHtml(item.intro));
     }
 
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
 }

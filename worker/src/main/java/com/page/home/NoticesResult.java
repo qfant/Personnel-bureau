@@ -10,29 +10,15 @@ import java.util.List;
 
 public class NoticesResult extends BaseResult {
 
-    public WorkerRepairData  data;
+    public NoticesData data;
 
-    public static class WorkerRepairData implements BaseData {
-        public List<CameraBean> cameras;
+    public static class NoticesData implements BaseData {
+        public List<NoticeBean> notices;
     }
-
-
-    public static class CameraBean implements BaseData {
+    public static class NoticeBean implements BaseData {
         public String id;
-        public String name;
-        public String imageUrl;
-        public int type;
-        public String url;
-        public String areaid;
-        public String deviceid;
-        public String shareid;
-        public String uk;
-
-//        	"uk":"270539",
-//                    11-15 22:40:27.684 23618-23646/com.haolb.personnel V/response: 			"id":"23",
-//                11-15 22:40:27.684 23618-23646/com.haolb.personnel V/response: 			"name":"古城镇万瑞箱包有限公司",
-//                11-15 22:40:27.684 23618-23646/com.haolb.personnel V/response: 			"areaid":"1",
-//                11-15 22:40:27.684 23618-23646/com.haolb.personnel V/response: 			"deviceid":"137894025675",
-//                11-15 22:40:27.684 23618-23646/com.haolb.personnel V/response: 			"shareid":"fa182dae82dd8ced3aae0bf4438aa265"
+        public String title;
+        public String createtime;
+        public String intro;
     }
 }

@@ -191,11 +191,13 @@ public class NetworkManager implements TaskListener {
 
             if (AppConstants.DEBUG) {
                 synchronized (QLog.class) {
+                    QLog.v("request", "hostUrl=" + hostUrl);
                     QLog.v("request", "API=" + networkTask.param.key.name());
                     QLog.v("request", networkTask.param.url);
                     QLog.v("request", "b=" + JSON.toJSONString(networkTask.param.param, true));
                 }
             }
+
             FileInputStream fis = null;
             HttpClient httpClient = NetworkManager.getHttpClient(proxyHost, proxyPort);
             try {

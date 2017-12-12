@@ -40,7 +40,6 @@ public class MessageFragment extends BaseFragment {
     @BindView(R.id.main_srl)
     SwipeRefreshLayout mainSrl;
     Unbinder unbinder;
-    private int type = 0;
     private MessageAdapter adapter;
 
     @Nullable
@@ -72,12 +71,11 @@ public class MessageFragment extends BaseFragment {
         mainLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                HomeAdapter adapter = (HomeAdapter) adapterView.getAdapter();
-//                CamerasResult.CameraBean item = adapter.getItem(i);
-//                item.type = adapter.getType();
-//                DetailParam param = new DetailParam();
-//                param.id = item.id;
-//                Request.startRequest(param, ServiceMap.getRepair, mHandler, Request.RequestFeature.BLOCK);
+                MessageAdapter adapter = (MessageAdapter) adapterView.getAdapter();
+                NoticesResult.NoticeBean item = adapter.getItem(i);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("item", item);
+                qStartActivity(MessageDetailActivity.class, bundle);
             }
         });
     }
@@ -89,17 +87,6 @@ public class MessageFragment extends BaseFragment {
     }
 
     private void loadData() {
-        CamerasResult.CameraBean repair = new CamerasResult.CameraBean();
-        repair.url = "";
-//        CameraBean.imageUrl="";
-        List<CamerasResult.CameraBean> list = new ArrayList<>();
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        adapter.setData(list);
         mainSrl.setRefreshing(true);
         GetNoticesParam param = new GetNoticesParam();
         Request.startRequest(param, ServiceMap.getNotices, mHandler, Request.RequestFeature.ADD_ONORDER);
@@ -110,25 +97,15 @@ public class MessageFragment extends BaseFragment {
         if (super.onMsgSearchComplete(param)) {
             return true;
         }
-        if (param.key == ServiceMap.getWorkers) {
+        if (param.key == ServiceMap.getNotices) {
             NoticesResult result = (NoticesResult) param.result;
             if (result.bstatus.code == 0) {
                 if (adapter != null) {
-                    adapter.setType(type);
-//                    adapter.setData(result.data.cameras);
+                    adapter.setData(result.data.notices);
                 }
                 if (mainSrl != null) {
                     mainSrl.setRefreshing(false);
                 }
-            }
-        } else if (param.key == ServiceMap.getRepair) {
-            if (param.result.bstatus.code == 0) {
-                DetailResult result = (DetailResult) param.result;
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("CameraBean", result.data);
-                qStartActivity(DetailActivity.class, bundle);
-            } else {
-                showToast(param.result.bstatus.des);
             }
         }
         return super.onMsgSearchComplete(param);
@@ -149,7 +126,4 @@ public class MessageFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    public void setType(int type) {
-        this.type = type;
-    }
 }
