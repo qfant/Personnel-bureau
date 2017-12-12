@@ -51,6 +51,7 @@ public class PersonListActivity extends BaseActivity {
         }
         setTitleBar(townBean.name, true);
         initData();
+        loadData();
     }
 
 
@@ -79,11 +80,6 @@ public class PersonListActivity extends BaseActivity {
         });
     }
 
-    @Override
-    public void onResume() {
-        loadData();
-        super.onResume();
-    }
 
     private void loadData() {
         mainSrl.setRefreshing(true);
