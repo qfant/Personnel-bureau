@@ -11,17 +11,12 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.haolb.client.R;
-import com.page.detail.DetailActivity;
 import com.page.detail.DetailParam;
-import com.page.detail.DetailResult;
 import com.page.home.CamerasResult;
 import com.page.home.GetPersonsParam;
 import com.page.home.TownsResult;
 import com.page.home.adapter.ContactListAdapter;
 import com.page.home.adapter.HomeAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

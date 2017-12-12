@@ -84,18 +84,6 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void loadData() {
-//        CamerasResult.CameraBean CameraBean = new CamerasResult.CameraBean();
-//        CameraBean.rtmp ="";
-//        CameraBean.imageUrl="";
-//        List<CamerasResult.CameraBean> list =new ArrayList<>();
-//        list.add(CameraBean);
-//        list.add(CameraBean);
-//        list.add(CameraBean);
-//        list.add(CameraBean);
-//        list.add(CameraBean);
-//        list.add(CameraBean);
-//        adapter.setData(list);
-//        mainSrl.setRefreshing(true);
         GetCamerasParam param = new GetCamerasParam();
         Request.startRequest(param, ServiceMap.getCameras, mHandler, Request.RequestFeature.ADD_ONORDER);
     }

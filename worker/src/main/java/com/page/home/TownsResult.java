@@ -2,6 +2,7 @@ package com.page.home;
 
 import com.framework.domain.response.BaseResult;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,5 +28,6 @@ public class TownsResult extends BaseResult {
     public static class TownBean implements BaseData {
         public String id;
         public String name;
+        public ArrayList<TownBean> village;
     }
 }

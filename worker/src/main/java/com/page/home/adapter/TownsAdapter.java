@@ -3,6 +3,7 @@ package com.page.home.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.framework.adapter.utils.QSimpleAdapter;
 import com.haolb.client.R;
@@ -26,8 +27,8 @@ public class TownsAdapter extends QSimpleAdapter<TownsResult.TownBean> {
 
     @Override
     protected void bindView(View view, Context context, TownsResult.TownBean item, int position) {
-//        ImageView imageView = (ImageView) view.findViewById(R.id.image);
-//        ImageLoader.getInstance(context).loadImage(item.pic, imageView,R.drawable.moren);
+        TextView textView =  view.findViewById(R.id.text_title);
+        textView.setText(item.name);
     }
 
 }

@@ -13,7 +13,7 @@ public class NoticesResult extends BaseResult {
     public NoticesData data;
 
     public static class NoticesData implements BaseData {
-        public List<NoticeBean> notices;
+        public List<NoticeBean> noticesResult;
     }
     public static class NoticeBean implements BaseData {
         public String id;

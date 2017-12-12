@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.framework.adapter.utils.QSimpleAdapter;
+import com.framework.utils.cache.ImageLoader;
 import com.haolb.client.R;
 import com.page.home.PersonsResult;
 
@@ -16,9 +17,9 @@ import static com.page.home.TownsResult.*;
  * Created by chenxi.cui on 2017/9/12.
  */
 
-public class PersonAdapter extends QSimpleAdapter<PersonsResult.PersonBean> {
+public class PersonListAdapter extends QSimpleAdapter<PersonsResult.PersonBean> {
 
-    public PersonAdapter(Context context) {
+    public PersonListAdapter(Context context) {
         super(context);
     }
 
@@ -29,9 +30,12 @@ public class PersonAdapter extends QSimpleAdapter<PersonsResult.PersonBean> {
 
     @Override
     protected void bindView(View view, Context context, PersonsResult.PersonBean item, int position) {
-        ImageView imageView = (ImageView) view.findViewById(R.id.image);
-        TextView tvInfo = (TextView) view.findViewById(R.id.text_name);
-//        ImageLoader.getInstance(context).loadImage(item.pic, imageView,R.drawable.moren);
+        ImageView imageView = view.findViewById(R.id.image_head);
+        TextView tvName = view.findViewById(R.id.text_name);
+        TextView tvPhone = view.findViewById(R.id.text_phone);
+        ImageLoader.getInstance(context).loadImage(item.headimg, imageView, R.drawable.moren);
+        tvName.setText(item.name);
+        tvPhone.setText(item.phone);
     }
 
 }

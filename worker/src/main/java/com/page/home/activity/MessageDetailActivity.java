@@ -1,6 +1,7 @@
 package com.page.home.activity;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.TextView;
 
 import com.framework.activity.BaseActivity;
@@ -23,6 +24,6 @@ public class MessageDetailActivity extends BaseActivity {
         }
         setTitleBar(noticeBean.title, true);
         TextView textView = findViewById(R.id.tv_intro);
-        textView.setText(noticeBean.intro);
+        textView.setText(Html.fromHtml(noticeBean.intro));
     }
 }

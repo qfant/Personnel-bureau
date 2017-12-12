@@ -24,10 +24,7 @@ public enum ServiceMap implements Enums.IType {
     checkVersion("/checkVersion.do", BaseResult.class),
     getVerificationCode("/getVerificationCode.do", BaseResult.class),
     customerLogin("/Customer/Login", LoginResult.class),
-    receiveRepair("/receiveRepair.do", BaseResult.class),
     getRepair("/getRepair.do", DetailResult.class),
-    startRepair("/startRepair.do", BaseResult.class),
-    endRepair("/endRepair.do", BaseResult.class),
     ;
 
     private final String mType;

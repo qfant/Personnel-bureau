@@ -24,7 +24,7 @@ import butterknife.Unbinder;
 
 /**
  * Created by chenxi.cui on 2017/8/13.
- * 首页
+ * townBean
  */
 
 public class TownsFragment extends BaseFragment {
@@ -34,7 +34,6 @@ public class TownsFragment extends BaseFragment {
     @BindView(R.id.main_srl)
     SwipeRefreshLayout mainSrl;
     Unbinder unbinder;
-    private int type = 0;
     private TownsAdapter adapter;
 
     @Nullable
@@ -49,6 +48,7 @@ public class TownsFragment extends BaseFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initData();
+        loadData();
     }
 
     private void initData() {
@@ -66,22 +66,15 @@ public class TownsFragment extends BaseFragment {
         mainLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                HomeAdapter adapter = (HomeAdapter) adapterView.getAdapter();
-                qStartActivity(ContactListActivity.class);
-//                CamerasResult.CameraBean item = adapter.getItem(i);
-//                item.type = adapter.getType();
-//                DetailParam param = new DetailParam();
-//                param.id = item.id;
-//                Request.startRequest(param, ServiceMap.getRepair, mHandler, Request.RequestFeature.BLOCK);
+                TownsAdapter adapter = (TownsAdapter) adapterView.getAdapter();
+                TownsResult.TownBean item = adapter.getItem(i);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("item", item);
+                qStartActivity(TownsChildActivity.class, bundle);
             }
         });
     }
 
-    @Override
-    public void onResume() {
-        loadData();
-        super.onResume();
-    }
 
     private void loadData() {
         mainSrl.setRefreshing(true);
@@ -122,7 +115,4 @@ public class TownsFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    public void setType(int type) {
-        this.type = type;
-    }
 }
