@@ -21,7 +21,7 @@ public class PersonsResult extends BaseResult {
      * townResult [i]. villages[i].id	村id	String
      */
     public static class PersonsData implements BaseData {
-        public List<PersonBean> persons;
+        public List<PersonBean> personsResult;
     }
 
     /**

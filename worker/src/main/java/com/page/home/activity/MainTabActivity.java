@@ -52,6 +52,7 @@ public class MainTabActivity extends BaseActivity implements TabLayout.OnTabClic
                 try {
                     TabItem tabItem = mTabs.get(position);
                     fragment =  tabItem.tagFragmentClz.newInstance();
+                    fragment.setType(position);
                 } catch (InstantiationException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {

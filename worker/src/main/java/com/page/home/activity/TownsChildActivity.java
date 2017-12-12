@@ -29,6 +29,7 @@ public class TownsChildActivity extends BaseActivity {
     Unbinder unbinder;
     private TownsAdapter adapter;
     private TownsResult.TownBean townBean;
+    private int type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class TownsChildActivity extends BaseActivity {
         setContentView(R.layout.pub_fragment_contact_layout);
         unbinder = ButterKnife.bind(this);
         townBean = (TownsResult.TownBean) myBundle.getSerializable("item");
+        type =  myBundle.getInt("type");
         if (townBean == null) {
             finish();
             return;
@@ -57,6 +59,7 @@ public class TownsChildActivity extends BaseActivity {
                 TownsAdapter adapter = (TownsAdapter) adapterView.getAdapter();
                 TownsResult.TownBean item = adapter.getItem(i);
                 Bundle bundle = new Bundle();
+                item.type = townBean.type;
                 bundle.putSerializable("item", item);
                 qStartActivity(PersonListActivity.class, bundle);
             }

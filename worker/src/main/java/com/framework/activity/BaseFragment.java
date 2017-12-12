@@ -67,6 +67,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener,
 	private HandlerCallbacks.FragmentCallback hcb;
 	protected QProgressDialogFragment progressDialog;
 	protected TitleBar mTitleBar;
+	private int type;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -557,5 +558,13 @@ public abstract class BaseFragment extends Fragment implements OnClickListener,
 			}
 		});
 		return popupWindow;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public int getType() {
+		return type;
 	}
 }

@@ -70,6 +70,7 @@ public class TownsFragment extends BaseFragment {
                 TownsResult.TownBean item = adapter.getItem(i);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("item", item);
+                item.type = getType();
                 qStartActivity(TownsChildActivity.class, bundle);
             }
         });

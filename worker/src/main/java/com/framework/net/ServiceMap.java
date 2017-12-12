@@ -17,9 +17,9 @@ import com.page.login.activity.LoginResult;
 public enum ServiceMap implements Enums.IType {
     getCameras("/Interface/getCameras", CamerasResult.class),
     getCameraDetail("/Interface/getCameraDetail", CameraDetailResult.class),
-    getWorkers("/Interface/getWorkers", CamerasResult.class),
-    getNotices("/Interface/getNotices", NoticesResult.class),
+    getWorkers("/Interface/getWorkers", PersonsResult.class),
     getPersons("/Customer/person", PersonsResult.class),
+    getNotices("/Interface/getNotices", NoticesResult.class),
     getTowns("/Customer/towns", TownsResult.class),
     checkVersion("/checkVersion.do", BaseResult.class),
     getVerificationCode("/getVerificationCode.do", BaseResult.class),

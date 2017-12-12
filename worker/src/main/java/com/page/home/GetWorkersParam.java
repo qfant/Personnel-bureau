@@ -9,4 +9,5 @@ import com.framework.domain.param.BaseParam;
 public class GetWorkersParam extends BaseParam {
     public int pageNo = 1;
     public int pageSize = 100;
+    public String villageId;
 }

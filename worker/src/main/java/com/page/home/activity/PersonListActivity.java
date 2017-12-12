@@ -13,6 +13,7 @@ import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.haolb.client.R;
 import com.page.home.GetPersonsParam;
+import com.page.home.GetWorkersParam;
 import com.page.home.PersonsResult;
 import com.page.home.TownsResult;
 import com.page.home.adapter.PersonListAdapter;
@@ -86,9 +87,16 @@ public class PersonListActivity extends BaseActivity {
 
     private void loadData() {
         mainSrl.setRefreshing(true);
-        GetPersonsParam param = new GetPersonsParam();
-        param.villageId = townBean.id;
-        Request.startRequest(param, ServiceMap.getPersons, mHandler, Request.RequestFeature.ADD_ONORDER);
+        if (townBean.type == 2) {
+            GetPersonsParam param = new GetPersonsParam();
+            param.villageId = townBean.id;
+            Request.startRequest(param, ServiceMap.getPersons, mHandler, Request.RequestFeature.ADD_ONORDER);
+        }else {
+            GetWorkersParam param = new GetWorkersParam();
+            param.villageId = townBean.id;
+            Request.startRequest(param, ServiceMap.getWorkers, mHandler, Request.RequestFeature.ADD_ONORDER);
+
+        }
     }
 
     @Override
@@ -96,16 +104,17 @@ public class PersonListActivity extends BaseActivity {
         if (super.onMsgSearchComplete(param)) {
             return true;
         }
-        if (param.key == ServiceMap.getPersons) {
-//            PersonsResult result = (PersonsResult) param.result;
-//            if (result.bstatus.code == 0) {
+        if (param.key == ServiceMap.getPersons||param.key == ServiceMap.getWorkers) {
+            PersonsResult result = (PersonsResult) param.result;
+            if (result.bstatus.code == 0) {
                 if (adapter != null) {
-//                    adapter.setData(result.data.towns);
+                    adapter.setData(result.data.personsResult);
                 }
                 if (mainSrl != null) {
                     mainSrl.setRefreshing(false);
                 }
             }
+        }
         return super.onMsgSearchComplete(param);
     }
 

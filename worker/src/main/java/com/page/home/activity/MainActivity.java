@@ -46,7 +46,7 @@ public class MainActivity extends MainTabActivity {
         addTab("视频监控", HomeFragment.class, myBundle, R.string.icon_font_a);
         addTab("内部通知", MessageFragment.class, myBundle, R.string.icon_font_b);
         addTab("六员一岗", TownsFragment.class, myBundle, R.string.icon_font_c);
-        addTab("企业用工", WorkersFragment.class, myBundle, R.string.icon_font_d);
+        addTab("企业用工", TownsFragment.class, myBundle, R.string.icon_font_d);
         onPostCreate();
         tv_right.setTypeface(MainApplication.getIconFont());
         tv_right.setText(R.string.icon_font_my);

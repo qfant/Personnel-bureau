@@ -22,7 +22,7 @@ public class TownsAdapter extends QSimpleAdapter<TownsResult.TownBean> {
 
     @Override
     protected View newView(Context context, ViewGroup parent) {
-        return inflate(R.layout.pub_person_item, null, false);
+        return inflate(R.layout.pub_town_item, null, false);
     }
 
     @Override

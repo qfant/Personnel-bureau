@@ -27,6 +27,7 @@ public class PersonDetailActivity extends BaseActivity {
             finish();
             return;
         }
+        setTitleBar(personBean.name, true);
         ImageView imageView = findViewById(R.id.image_head);
         ImageLoader.getInstance(this).loadImage(personBean.headimg, imageView, R.drawable.moren);
         llContent = findViewById(R.id.ll_content);

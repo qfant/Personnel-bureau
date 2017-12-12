@@ -28,6 +28,7 @@ public class TownsResult extends BaseResult {
     public static class TownBean implements BaseData {
         public String id;
         public String name;
+        public int type;
         public ArrayList<TownBean> village;
     }
 }
