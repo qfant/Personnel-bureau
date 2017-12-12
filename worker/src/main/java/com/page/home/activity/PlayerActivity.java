@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.framework.activity.BaseActivity;
 import com.haolb.client.R;
-import com.page.detail.EquipmentResult;
+import com.page.detail.CameraDetailResult;
 
 import tv.danmaku.ijk.media.player.IMediaPlayer;
 import tv.danmaku.ijk.media.widget.VideoView;
@@ -30,7 +30,7 @@ public class PlayerActivity extends BaseActivity implements View.OnTouchListener
         setContentView(R.layout.activity_player);
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        EquipmentResult.EquipmentData item = (EquipmentResult.EquipmentData) myBundle.getSerializable("item");
+        CameraDetailResult.CameraDetailData item = (CameraDetailResult.CameraDetailData) myBundle.getSerializable("item");
         if (item != null) {
 //            setTitleBar(item.name, true);
         }else {

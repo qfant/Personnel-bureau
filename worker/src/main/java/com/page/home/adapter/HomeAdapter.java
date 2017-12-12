@@ -3,20 +3,18 @@ package com.page.home.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.framework.adapter.utils.QSimpleAdapter;
-import com.framework.utils.cache.ImageLoader;
 import com.haolb.client.R;
-import com.page.home.WorkerRepairResult;
+import com.page.home.CamerasResult;
 
 /**
  * Created by chenxi.cui on 2017/9/12.
  */
 
-public class HomeAdapter extends QSimpleAdapter<WorkerRepairResult.repair> {
+public class HomeAdapter extends QSimpleAdapter<CamerasResult.CameraBean> {
     private int type;
 
     public HomeAdapter(Context context) {
@@ -29,7 +27,7 @@ public class HomeAdapter extends QSimpleAdapter<WorkerRepairResult.repair> {
     }
 
     @Override
-    protected void bindView(View view, Context context, WorkerRepairResult.repair item, int position) {
+    protected void bindView(View view, Context context, CamerasResult.CameraBean item, int position) {
         ImageView imageView = (ImageView) view.findViewById(R.id.image);
         TextView tvInfo = (TextView) view.findViewById(R.id.text_name);
         tvInfo.setText(item.name);

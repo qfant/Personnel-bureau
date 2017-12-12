@@ -34,7 +34,7 @@
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
-//        EquipmentResult.EquipmentData data = (EquipmentResult.EquipmentData) myBundle.getSerializable("item");
+//        CameraDetailResult.CameraDetailData data = (CameraDetailResult.CameraDetailData) myBundle.getSerializable("item");
 //        //检查vitamio框架是否可用
 //        if (!LibsChecker.checkVitamioLibs(this)) {
 //            return;

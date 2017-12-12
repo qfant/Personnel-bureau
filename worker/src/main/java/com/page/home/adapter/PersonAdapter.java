@@ -8,14 +8,14 @@ import android.widget.TextView;
 
 import com.framework.adapter.utils.QSimpleAdapter;
 import com.haolb.client.R;
-import com.page.home.WorkerRepairResult;
+
+import static com.page.home.TownsResult.*;
 
 /**
  * Created by chenxi.cui on 2017/9/12.
  */
 
-public class PersonAdapter extends QSimpleAdapter<WorkerRepairResult.repair> {
-    private int type;
+public class PersonAdapter extends QSimpleAdapter<TownBean> {
 
     public PersonAdapter(Context context) {
         super(context);
@@ -27,17 +27,10 @@ public class PersonAdapter extends QSimpleAdapter<WorkerRepairResult.repair> {
     }
 
     @Override
-    protected void bindView(View view, Context context, WorkerRepairResult.repair item, int position) {
+    protected void bindView(View view, Context context, TownBean item, int position) {
         ImageView imageView = (ImageView) view.findViewById(R.id.image);
         TextView tvInfo = (TextView) view.findViewById(R.id.text_name);
 //        ImageLoader.getInstance(context).loadImage(item.pic, imageView,R.drawable.moren);
     }
 
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
 }

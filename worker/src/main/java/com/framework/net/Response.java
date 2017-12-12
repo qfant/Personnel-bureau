@@ -29,7 +29,7 @@ public final class Response {
             case ServiceMap.NET_TASKTYPE_CONTROL:
             case ServiceMap.NET_TASKTYPE_FILE:
                 str = new String(data);
-//                QLog.v("str", "param.ke=" + param.ke);
+                QLog.v("str", "param.ke=" + param.ke);
                 if (param.ke != null) {
                 	str = SecureUtil.decode(str, param.ke);
 //                	QLog.v("str", "str=" + str);

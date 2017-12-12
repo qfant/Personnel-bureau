@@ -15,11 +15,12 @@ import com.framework.domain.response.BaseResult;
  * 09-12 18:31:27.639 11407-14004/com.haolb.worker V/response: 		"pic":"123123"
  */
 
-public class EquipmentResult extends BaseResult {
+public class CameraDetailResult extends BaseResult {
 
-    public EquipmentData data;
+    public CameraDetailData data;
 
-    public static class EquipmentData implements BaseData {
+    public static class CameraDetailData implements BaseData {
+        public String id;
         public String rtmp;
         public String name="";
     }

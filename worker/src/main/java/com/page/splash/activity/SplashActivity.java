@@ -25,7 +25,7 @@ public class SplashActivity extends BaseActivity {
 
 
     private void startMainActivity() {
-        if (!UCUtils.getInstance().isLogin()) {
+        if (UCUtils.getInstance().isLogin()) {
             Intent intent = new Intent();
             intent.setClass(getContext(), MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP

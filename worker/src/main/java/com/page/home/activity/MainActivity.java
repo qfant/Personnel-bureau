@@ -13,6 +13,7 @@ import com.framework.app.MainApplication;
 import com.framework.utils.ArrayUtils;
 import com.framework.view.tab.TabLayout;
 import com.haolb.client.R;
+import com.page.login.UCUtils;
 import com.page.login.activity.LoginActivity;
 import com.page.uc.UserInfoActivity;
 
@@ -60,6 +61,11 @@ public class MainActivity extends MainTabActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if (!UCUtils.getInstance().isLogin()) {
+            Intent intent = new Intent();
+            intent.setClass(getContext(), LoginActivity.class);
+            qStartActivity(intent);
+        }
     }
 
     @Override

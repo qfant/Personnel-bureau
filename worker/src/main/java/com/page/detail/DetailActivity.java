@@ -52,7 +52,7 @@ public class DetailActivity extends BaseActivity {
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
         setTitleBar("详情", true);
-        item = (DetailData) myBundle.getSerializable("repair");
+        item = (DetailData) myBundle.getSerializable("CameraBean");
         setData();
     }
 

@@ -8,21 +8,20 @@ import java.util.List;
  * Created by chenxi.cui on 2017/9/12.
  */
 
-public class WorkerRepairResult extends BaseResult {
+public class NoticesResult extends BaseResult {
 
     public WorkerRepairData  data;
 
     public static class WorkerRepairData implements BaseData {
-        public int totalNum;
-        public List<repair> equimpents;
+        public List<CameraBean> cameras;
     }
 
 
-    public static class repair implements BaseData {
+    public static class CameraBean implements BaseData {
         public String id;
-        public int type;
         public String name;
         public String imageUrl;
+        public int type;
         public String url;
         public String areaid;
         public String deviceid;

@@ -11,11 +11,15 @@ import android.widget.GridView;
 
 import com.framework.activity.BaseFragment;
 import com.framework.net.NetworkParam;
+import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.haolb.client.R;
 import com.page.detail.DetailActivity;
 import com.page.detail.DetailResult;
-import com.page.home.WorkerRepairResult;
+import com.page.home.CamerasResult;
+import com.page.home.GetPersonsParam;
+import com.page.home.GetTownsParam;
+import com.page.home.TownsResult;
 import com.page.home.adapter.PersonAdapter;
 
 import java.util.ArrayList;
@@ -33,11 +37,10 @@ import butterknife.Unbinder;
 public class PersonFragment extends BaseFragment {
 
     @BindView(R.id.main_lv)
-    GridView  mainLv;
+    GridView mainLv;
     @BindView(R.id.main_srl)
     SwipeRefreshLayout mainSrl;
     Unbinder unbinder;
-    private int type = 0;
     private PersonAdapter adapter;
 
     @Nullable
@@ -69,14 +72,13 @@ public class PersonFragment extends BaseFragment {
         mainLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                qStartActivity(ContactListActivity.class);
-//                HomeAdapter adapter = (HomeAdapter) adapterView.getAdapter();
-//                WorkerRepairResult.repair item = adapter.getItem(i);
-//                item.type = adapter.getType();
-//                DetailParam param = new DetailParam();
-//                param.id = item.id;
-//                Request.startRequest(param, ServiceMap.getRepair, mHandler, Request.RequestFeature.BLOCK);
-            }
+
+                PersonAdapter adapter = (PersonAdapter) adapterView.getAdapter();
+                TownsResult.TownBean item = adapter.getItem(i);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("item", item);
+                qStartActivity(ContactListActivity.class, bundle);
+     }
         });
     }
 
@@ -87,39 +89,21 @@ public class PersonFragment extends BaseFragment {
     }
 
     private void loadData() {
-        WorkerRepairResult.repair repair = new WorkerRepairResult.repair();
-        repair.url ="";
-        repair.imageUrl="";
-        List<WorkerRepairResult.repair> list =new ArrayList<>();
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        adapter.setData(list);
-//        mainSrl.setRefreshing(true);
-//        WorkerRepairParam param = new WorkerRepairParam();
-//        param.type = type + 1;
-//        Request.startRequest(param, ServiceMap.getWorkerRepairs, mHandler, Request.RequestFeature.ADD_ONORDER);
+        mainSrl.setRefreshing(true);
+        GetTownsParam param = new GetTownsParam();
+        Request.startRequest(param, ServiceMap.getTowns, mHandler, Request.RequestFeature.ADD_ONORDER);
     }
+
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (super.onMsgSearchComplete(param)) {
             return true;
         }
-        if (param.key == ServiceMap.getWorkerRepairs) {
-            WorkerRepairResult result = (WorkerRepairResult) param.result;
+        if (param.key == ServiceMap.getTowns) {
+            TownsResult result = (TownsResult) param.result;
             if (result.bstatus.code == 0) {
                 if (adapter != null) {
-                    adapter.setType(type);
-                    adapter.setData(result.data.equimpents);
+                    adapter.setData(result.data.towns);
                 }
                 if (mainSrl != null) {
                     mainSrl.setRefreshing(false);
@@ -129,7 +113,7 @@ public class PersonFragment extends BaseFragment {
             if (param.result.bstatus.code == 0) {
                 DetailResult result = (DetailResult) param.result;
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("repair", result.data);
+                bundle.putSerializable("CameraBean", result.data);
                 qStartActivity(DetailActivity.class, bundle);
             } else {
                 showToast(param.result.bstatus.des);
@@ -153,7 +137,4 @@ public class PersonFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    public void setType(int type) {
-        this.type = type;
-    }
 }

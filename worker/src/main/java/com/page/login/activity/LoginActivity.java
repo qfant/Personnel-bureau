@@ -50,6 +50,10 @@ public class LoginActivity extends BaseActivity {
         setContentView(R.layout.pub_activity_login_layout);
         ButterKnife.bind(this);
         tvRig.setVisibility(View.GONE);
+        setTitleBar("登录", false);
+        tietUsername.setText("15151699853");
+        tietPassword.setText("123456");
+        textLogin.setEnabled(true);
     }
 
     @OnClick({R.id.text_send_code, R.id.text_login,R.id.tv_rig})
@@ -72,9 +76,6 @@ public class LoginActivity extends BaseActivity {
         public int type = 1;
     }
 
-    public void getLink() {
-        Request.startRequest(new LinkParam(), ServiceMap.getLinks, mHandler);
-    }
 
     public void checkUpdate() {
         Request.startRequest(new UpdateParam(), ServiceMap.checkVersion, mHandler);
@@ -84,12 +85,12 @@ public class LoginActivity extends BaseActivity {
 
         String phone = tilUsername.getEditText().getText().toString();
         String psw = tilPassword.getEditText().getText().toString();
-        if (TextUtils.isEmpty(psw)) {
-            showToast("验证码有误");
-        }
+//        if (TextUtils.isEmpty(psw)) {
+//            showToast("验证码有误");
+//        }
 
         LoginParam loginParam = new LoginParam();
-        loginParam.code = psw;
+        loginParam.password = psw;
         loginParam.phone = phone;
         Request.startRequest(loginParam, ServiceMap.customerLogin, mHandler, Request.RequestFeature.BLOCK);
     }

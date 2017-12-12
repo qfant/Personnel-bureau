@@ -8,13 +8,13 @@ import android.widget.TextView;
 
 import com.framework.adapter.utils.QSimpleAdapter;
 import com.haolb.client.R;
-import com.page.home.WorkerRepairResult;
+import com.page.home.CamerasResult;
 
 /**
  * Created by chenxi.cui on 2017/9/12.
  */
 
-public class MessageAdapter extends QSimpleAdapter<WorkerRepairResult.repair> {
+public class MessageAdapter extends QSimpleAdapter<CamerasResult.CameraBean> {
     private int type;
 
     public MessageAdapter(Context context) {
@@ -27,7 +27,7 @@ public class MessageAdapter extends QSimpleAdapter<WorkerRepairResult.repair> {
     }
 
     @Override
-    protected void bindView(View view, Context context, WorkerRepairResult.repair item, int position) {
+    protected void bindView(View view, Context context, CamerasResult.CameraBean item, int position) {
         ImageView imageView = (ImageView) view.findViewById(R.id.image);
         TextView tvInfo = (TextView) view.findViewById(R.id.text_name);
 //        ImageLoader.getInstance(context).loadImage(item.pic, imageView,R.drawable.moren);

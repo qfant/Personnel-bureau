@@ -3,22 +3,26 @@ package com.framework.net;
 
 import com.framework.domain.response.BaseResult;
 import com.framework.utils.Enums;
+import com.page.detail.CameraDetailResult;
 import com.page.detail.DetailResult;
-import com.page.detail.EquipmentResult;
-import com.page.home.WorkerRepairResult;
+import com.page.home.CamerasResult;
+import com.page.home.NoticesResult;
+import com.page.home.TownsResult;
 import com.page.login.activity.LoginResult;
 
 /**
  * @author zexu
  */
 public enum ServiceMap implements Enums.IType {
-    equipments("/equipments", WorkerRepairResult.class), //获取通讯录联系人
-    equipment("/equipment", EquipmentResult.class), //获取通讯录联系人
-    getWorkerRepairs("/getWorkerRepairs.do", WorkerRepairResult.class), //获取通讯录联系人
-    getLinks("/getLinks.do", BaseResult.class),
+    getCameras("/Interface/getCameras", CamerasResult.class),
+    getCameraDetail("/Interface/getCameraDetail", CameraDetailResult.class),
+    getWorkers("Interface/getWorkers", CamerasResult.class),
+    getNotices("Interface/getNotices", NoticesResult.class),
+    getPersons("Customer/person", NoticesResult.class),
+    getTowns("/Customer/towns", TownsResult.class),
     checkVersion("/checkVersion.do", BaseResult.class),
     getVerificationCode("/getVerificationCode.do", BaseResult.class),
-    customerLogin("/workerLogin.do", LoginResult.class),
+    customerLogin("/Customer/Login", LoginResult.class),
     receiveRepair("/receiveRepair.do", BaseResult.class),
     getRepair("/getRepair.do", DetailResult.class),
     startRepair("/startRepair.do", BaseResult.class),

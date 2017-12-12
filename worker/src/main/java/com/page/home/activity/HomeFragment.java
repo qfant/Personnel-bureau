@@ -14,16 +14,11 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.haolb.client.R;
-import com.page.detail.DetailActivity;
+import com.page.detail.CameraDetailResult;
 import com.page.detail.DetailParam;
-import com.page.detail.DetailResult;
-import com.page.detail.EquipmentResult;
-import com.page.home.WorkerRepairParam;
-import com.page.home.WorkerRepairResult;
+import com.page.home.CamerasResult;
+import com.page.home.GetCamerasParam;
 import com.page.home.adapter.HomeAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -74,10 +69,10 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //                HomeAdapter adapter = (HomeAdapter) adapterView.getAdapter();
-                WorkerRepairResult.repair item = adapter.getItem(i);
+                CamerasResult.CameraBean item = adapter.getItem(i);
                 DetailParam param = new DetailParam();
                 param.id = item.id;
-                Request.startRequest(param, ServiceMap.equipment, mHandler, Request.RequestFeature.BLOCK);
+                Request.startRequest(param, ServiceMap.getCameraDetail, mHandler, Request.RequestFeature.BLOCK);
             }
         });
     }
@@ -89,41 +84,40 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void loadData() {
-//        WorkerRepairResult.repair repair = new WorkerRepairResult.repair();
-//        repair.rtmp ="";
-//        repair.imageUrl="";
-//        List<WorkerRepairResult.repair> list =new ArrayList<>();
-//        list.add(repair);
-//        list.add(repair);
-//        list.add(repair);
-//        list.add(repair);
-//        list.add(repair);
-//        list.add(repair);
+//        CamerasResult.CameraBean CameraBean = new CamerasResult.CameraBean();
+//        CameraBean.rtmp ="";
+//        CameraBean.imageUrl="";
+//        List<CamerasResult.CameraBean> list =new ArrayList<>();
+//        list.add(CameraBean);
+//        list.add(CameraBean);
+//        list.add(CameraBean);
+//        list.add(CameraBean);
+//        list.add(CameraBean);
+//        list.add(CameraBean);
 //        adapter.setData(list);
 //        mainSrl.setRefreshing(true);
-        WorkerRepairParam param = new WorkerRepairParam();
-        param.type = 1;
-        Request.startRequest(param, ServiceMap.equipments, mHandler, Request.RequestFeature.ADD_ONORDER);
+        GetCamerasParam param = new GetCamerasParam();
+        Request.startRequest(param, ServiceMap.getCameras, mHandler, Request.RequestFeature.ADD_ONORDER);
     }
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (super.onMsgSearchComplete(param)) {
             return true;
         }
-        if (param.key == ServiceMap.equipments) {
-            WorkerRepairResult result = (WorkerRepairResult) param.result;
+        if (param.key == ServiceMap.getCameras) {
+            CamerasResult result = (CamerasResult) param.result;
             if (result.bstatus.code == 0) {
                 if (adapter != null) {
                     adapter.setType(type);
-                    adapter.setData(result.data.equimpents);
+                    adapter.setData(result.data.cameras);
                 }
                 if (mainSrl != null) {
                     mainSrl.setRefreshing(false);
                 }
             }
-        } else if (param.key == ServiceMap.equipment) {
+        } else if (param.key == ServiceMap.getCameraDetail) {
             if (param.result.bstatus.code == 0) {
-                EquipmentResult result = (EquipmentResult) param.result;
+                CameraDetailResult result = (CameraDetailResult) param.result;
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("item", result.data);
                 qStartActivity(PlayerActivity.class, bundle);
@@ -149,7 +143,4 @@ public class HomeFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    public void setType(int type) {
-        this.type = type;
-    }
 }

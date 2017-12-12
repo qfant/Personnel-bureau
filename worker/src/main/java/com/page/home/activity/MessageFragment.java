@@ -15,10 +15,10 @@ import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.haolb.client.R;
 import com.page.detail.DetailActivity;
-import com.page.detail.DetailParam;
 import com.page.detail.DetailResult;
-import com.page.home.WorkerRepairResult;
-import com.page.home.adapter.HomeAdapter;
+import com.page.home.CamerasResult;
+import com.page.home.GetNoticesParam;
+import com.page.home.NoticesResult;
 import com.page.home.adapter.MessageAdapter;
 
 import java.util.ArrayList;
@@ -73,7 +73,7 @@ public class MessageFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //                HomeAdapter adapter = (HomeAdapter) adapterView.getAdapter();
-//                WorkerRepairResult.repair item = adapter.getItem(i);
+//                CamerasResult.CameraBean item = adapter.getItem(i);
 //                item.type = adapter.getType();
 //                DetailParam param = new DetailParam();
 //                param.id = item.id;
@@ -89,10 +89,10 @@ public class MessageFragment extends BaseFragment {
     }
 
     private void loadData() {
-        WorkerRepairResult.repair repair = new WorkerRepairResult.repair();
-        repair.url ="";
-//        repair.imageUrl="";
-        List<WorkerRepairResult.repair> list =new ArrayList<>();
+        CamerasResult.CameraBean repair = new CamerasResult.CameraBean();
+        repair.url = "";
+//        CameraBean.imageUrl="";
+        List<CamerasResult.CameraBean> list = new ArrayList<>();
         list.add(repair);
         list.add(repair);
         list.add(repair);
@@ -100,22 +100,22 @@ public class MessageFragment extends BaseFragment {
         list.add(repair);
         list.add(repair);
         adapter.setData(list);
-//        mainSrl.setRefreshing(true);
-//        WorkerRepairParam param = new WorkerRepairParam();
-//        param.type = type + 1;
-//        Request.startRequest(param, ServiceMap.getWorkerRepairs, mHandler, Request.RequestFeature.ADD_ONORDER);
+        mainSrl.setRefreshing(true);
+        GetNoticesParam param = new GetNoticesParam();
+        Request.startRequest(param, ServiceMap.getNotices, mHandler, Request.RequestFeature.ADD_ONORDER);
     }
+
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (super.onMsgSearchComplete(param)) {
             return true;
         }
-        if (param.key == ServiceMap.getWorkerRepairs) {
-            WorkerRepairResult result = (WorkerRepairResult) param.result;
+        if (param.key == ServiceMap.getWorkers) {
+            NoticesResult result = (NoticesResult) param.result;
             if (result.bstatus.code == 0) {
                 if (adapter != null) {
                     adapter.setType(type);
-                    adapter.setData(result.data.equimpents);
+//                    adapter.setData(result.data.cameras);
                 }
                 if (mainSrl != null) {
                     mainSrl.setRefreshing(false);
@@ -125,7 +125,7 @@ public class MessageFragment extends BaseFragment {
             if (param.result.bstatus.code == 0) {
                 DetailResult result = (DetailResult) param.result;
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("repair", result.data);
+                bundle.putSerializable("CameraBean", result.data);
                 qStartActivity(DetailActivity.class, bundle);
             } else {
                 showToast(param.result.bstatus.des);

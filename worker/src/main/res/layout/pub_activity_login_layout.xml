@@ -9,6 +9,7 @@
         android:orientation="vertical">
 
         <FrameLayout
+            android:visibility="gone"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_gravity="center_horizontal"
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:text="幸福宜居"
+            android:visibility="gone"
             android:textColor="@color/pub_color_black"
             android:textSize="@dimen/text_h20" />
 
@@ -68,10 +69,11 @@
                     android:textColor="@color/pub_color_black"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_h16"
-                    android:hint="请输入验证码" />
+                    android:hint="请输入密码" />
             </android.support.design.widget.TextInputLayout>
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/text_send_code"
                 android:layout_width="93dp"
                 android:layout_height="33dp"
