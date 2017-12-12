@@ -14,14 +14,9 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.haolb.client.R;
-import com.page.detail.DetailActivity;
-import com.page.detail.DetailResult;
-import com.page.home.CamerasResult;
-import com.page.home.GetWorkersParam;
-import com.page.home.adapter.ContactAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.page.home.GetTownsParam;
+import com.page.home.TownsResult;
+import com.page.home.adapter.TownsAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +27,7 @@ import butterknife.Unbinder;
  * 首页
  */
 
-public class ContactFragment extends BaseFragment {
+public class TownsFragment extends BaseFragment {
 
     @BindView(R.id.main_lv)
     GridView mainLv;
@@ -40,7 +35,7 @@ public class ContactFragment extends BaseFragment {
     SwipeRefreshLayout mainSrl;
     Unbinder unbinder;
     private int type = 0;
-    private ContactAdapter adapter;
+    private TownsAdapter adapter;
 
     @Nullable
     @Override
@@ -57,7 +52,7 @@ public class ContactFragment extends BaseFragment {
     }
 
     private void initData() {
-        adapter = new ContactAdapter(getContext());
+        adapter = new TownsAdapter(getContext());
         mainLv.setAdapter(adapter);
         mainSrl.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
                 android.R.color.holo_orange_light, android.R.color.holo_red_light);
@@ -89,45 +84,24 @@ public class ContactFragment extends BaseFragment {
     }
 
     private void loadData() {
-        CamerasResult.CameraBean repair = new CamerasResult.CameraBean();
-//        CameraBean.rtmp ="";
-//        CameraBean.imageUrl="";
-        List<CamerasResult.CameraBean> list =new ArrayList<>();
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        list.add(repair);
-        adapter.setData(list);
         mainSrl.setRefreshing(true);
-        GetWorkersParam param = new GetWorkersParam();
-        Request.startRequest(param, ServiceMap.getWorkers, mHandler, Request.RequestFeature.ADD_ONORDER);
+        GetTownsParam param = new GetTownsParam();
+        Request.startRequest(param, ServiceMap.getTowns, mHandler, Request.RequestFeature.ADD_ONORDER);
     }
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (super.onMsgSearchComplete(param)) {
             return true;
         }
-        if (param.key == ServiceMap.getWorkers) {
-            CamerasResult result = (CamerasResult) param.result;
+        if (param.key == ServiceMap.getTowns) {
+            TownsResult result = (TownsResult) param.result;
             if (result.bstatus.code == 0) {
                 if (adapter != null) {
-                    adapter.setType(type);
-                    adapter.setData(result.data.cameras);
+                    adapter.setData(result.data.towns);
                 }
                 if (mainSrl != null) {
                     mainSrl.setRefreshing(false);
                 }
-            }
-        } else if (param.key == ServiceMap.getRepair) {
-            if (param.result.bstatus.code == 0) {
-                DetailResult result = (DetailResult) param.result;
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("CameraBean", result.data);
-                qStartActivity(DetailActivity.class, bundle);
-            } else {
-                showToast(param.result.bstatus.des);
             }
         }
         return super.onMsgSearchComplete(param);

@@ -75,10 +75,10 @@ public class PersonFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 PersonAdapter adapter = (PersonAdapter) adapterView.getAdapter();
-                TownsResult.TownBean item = adapter.getItem(i);
+                PersonsResult.PersonBean item = adapter.getItem(i);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("item", item);
-                qStartActivity(ContactListActivity.class, bundle);
+                qStartActivity(PersonDetailActivity.class, bundle);
      }
         });
     }

@@ -7,15 +7,15 @@ import android.view.ViewGroup;
 import com.framework.adapter.utils.QSimpleAdapter;
 import com.haolb.client.R;
 import com.page.home.CamerasResult;
+import com.page.home.TownsResult;
 
 /**
  * Created by chenxi.cui on 2017/9/12.
  */
 
-public class ContactAdapter extends QSimpleAdapter<CamerasResult.CameraBean> {
-    private int type;
+public class TownsAdapter extends QSimpleAdapter<TownsResult.TownBean> {
 
-    public ContactAdapter(Context context) {
+    public TownsAdapter(Context context) {
         super(context);
     }
 
@@ -25,16 +25,9 @@ public class ContactAdapter extends QSimpleAdapter<CamerasResult.CameraBean> {
     }
 
     @Override
-    protected void bindView(View view, Context context, CamerasResult.CameraBean item, int position) {
+    protected void bindView(View view, Context context, TownsResult.TownBean item, int position) {
 //        ImageView imageView = (ImageView) view.findViewById(R.id.image);
 //        ImageLoader.getInstance(context).loadImage(item.pic, imageView,R.drawable.moren);
     }
 
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
 }

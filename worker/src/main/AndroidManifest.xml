@@ -59,7 +59,11 @@
         <activity
             android:name="com.page.home.activity.MessageDetailActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.page.home.activity.PersonDetailActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.page.home.activity.PlayerActivity"
             android:configChanges="orientation|keyboardHidden"

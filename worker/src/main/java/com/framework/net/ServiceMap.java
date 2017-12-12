@@ -7,6 +7,7 @@ import com.page.detail.CameraDetailResult;
 import com.page.detail.DetailResult;
 import com.page.home.CamerasResult;
 import com.page.home.NoticesResult;
+import com.page.home.PersonsResult;
 import com.page.home.TownsResult;
 import com.page.login.activity.LoginResult;
 
@@ -18,7 +19,7 @@ public enum ServiceMap implements Enums.IType {
     getCameraDetail("/Interface/getCameraDetail", CameraDetailResult.class),
     getWorkers("/Interface/getWorkers", CamerasResult.class),
     getNotices("/Interface/getNotices", NoticesResult.class),
-    getPersons("/Customer/person", NoticesResult.class),
+    getPersons("/Customer/person", PersonsResult.class),
     getTowns("/Customer/towns", TownsResult.class),
     checkVersion("/checkVersion.do", BaseResult.class),
     getVerificationCode("/getVerificationCode.do", BaseResult.class),

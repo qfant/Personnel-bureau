@@ -28,7 +28,7 @@
     <color name="pub_color_blue">#00B3E3</color>
     <color name="pub_color_blue_F5FCFF">#F5FCFF</color>
     <color name="pub_color_blue_press">#0295c6</color>
-    <color name="pub_color_gray_line">#ffe8e8e8</color>
+    <color name="pub_color_gray_line">#ff666666</color>
 
     <color name="pub_keybord_normal">#ffffff</color>
     <color name="pub_keybord_press">#d2d4d8</color>
