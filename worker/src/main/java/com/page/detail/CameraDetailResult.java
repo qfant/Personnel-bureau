@@ -20,6 +20,9 @@ public class CameraDetailResult extends BaseResult {
     public CameraDetailData data;
 
     public static class CameraDetailData implements BaseData {
+        public CameraBean cameraResult;
+    }
+    public static class CameraBean implements BaseData {
         public String id;
         public String rtmp;
         public String name="";

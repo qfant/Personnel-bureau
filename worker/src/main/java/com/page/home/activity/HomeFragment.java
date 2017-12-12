@@ -107,7 +107,7 @@ public class HomeFragment extends BaseFragment {
             if (param.result.bstatus.code == 0) {
                 CameraDetailResult result = (CameraDetailResult) param.result;
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("item", result.data);
+                bundle.putSerializable("item", result.data.cameraResult);
                 qStartActivity(PlayerActivity.class, bundle);
             } else {
                 showToast(param.result.bstatus.des);

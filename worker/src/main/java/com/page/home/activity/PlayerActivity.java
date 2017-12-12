@@ -30,7 +30,7 @@ public class PlayerActivity extends BaseActivity implements View.OnTouchListener
         setContentView(R.layout.activity_player);
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 //        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        CameraDetailResult.CameraDetailData item = (CameraDetailResult.CameraDetailData) myBundle.getSerializable("item");
+        CameraDetailResult.CameraBean item = (CameraDetailResult.CameraBean) myBundle.getSerializable("item");
         if (item != null) {
 //            setTitleBar(item.name, true);
         }else {
