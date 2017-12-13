@@ -31,6 +31,7 @@ public class HomeAdapter extends QSimpleAdapter<CamerasResult.CameraBean> {
         ImageView imageView = (ImageView) view.findViewById(R.id.image);
         TextView tvInfo = (TextView) view.findViewById(R.id.text_name);
         tvInfo.setText(item.name);
+        imageView.setVisibility(View.GONE);
 //        ImageLoader.getInstance(context).loadImage(item.pic, imageView,R.drawable.moren);
     }
 

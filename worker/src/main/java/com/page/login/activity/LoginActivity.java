@@ -51,8 +51,8 @@ public class LoginActivity extends BaseActivity {
         ButterKnife.bind(this);
         tvRig.setVisibility(View.GONE);
         setTitleBar("登录", false);
-        tietUsername.setText("15151699853");
-        tietPassword.setText("123456");
+//        tietUsername.setText("15151699853");
+//        tietPassword.setText("123456");
         textLogin.setEnabled(true);
     }
 
