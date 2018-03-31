@@ -1,8 +1,8 @@
 apply plugin: "com.android.application"
-apply plugin: 'com.jakewharton.butterknife'
+//apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion '26.0.2'
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.qfant.wuye"
@@ -166,7 +166,6 @@ dependencies {
     debugCompile 'com.squareup.okhttp:okhttp-ws:2.3.0'
     debugCompile 'com.taobao.android:weex_inspector:0.10.0.5'
     debugCompile 'com.journeyapps:zxing-android-embedded:3.4.0'
-
 // taobao weexsdk
 //    compile 'com.ucar:weex_sdk:1.6@aar'
 
